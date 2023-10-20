@@ -6,8 +6,9 @@ def get_rand_num() :
     rand_num = random.randint(1, 10)        
     return rand_num
 
-# CONGRATULATES THE USER ON A WIN, PROVIDES STATS, & PROMPTS TO CONTINUE
+# RUNS WHEN USER WINS
 def handle_win(final_score, high_score, game_count) :
+    # congratulates user, updates & prints stats
     print("\n*** --- !CONGRATULATIONS - YOU'VE GUESSED CORRECTLY! --- ***\n")
     if game_count == 1 :
         high_score = final_score
@@ -18,6 +19,7 @@ def handle_win(final_score, high_score, game_count) :
     print( 'STATS:\n--High Score: {}\n--Final Score: {}\n--Total Game Rounds: {}'.format(high_score, final_score, game_count) )
     stats_arr = [3, high_score, game_count]
 
+    # prompt to continue/exit game
     while True :
         win_prompt = input('\nPlay again?(yes/no)  ')
         if win_prompt.upper() == 'YES' :
@@ -29,7 +31,7 @@ def handle_win(final_score, high_score, game_count) :
         else :
             print("Input not recognized. Please input 'yes' or 'no'.")
     
-# GUESS LOOPS
+# GUESS LOOP
 def guess_loop(final_score, rand_num, game_count, high_score) :
     while True :
     # provide feedback based on user input
@@ -63,7 +65,7 @@ def start_game() :
     """)
     print('\nTO PLAY:\n--Enter a number from 1-10 into the command line to make your guess.\n--If you guess incorrectly you will be given a hint.\n--If you guess correctly the game will end and you can play again!')
 
-    # game play
+    # game start & refresh
     high_score = 0
     game_count = 1
 
@@ -95,7 +97,7 @@ def start_game() :
         *** -------------------------- ***
     """)
     
-# RUNS GAME & END MSG
+# RUNS GAME
 start_game()
 
 
