@@ -62,12 +62,26 @@ def guess_loop(loop_count, rand_num, game_count, high_score) :
             print(err)
             continue
 
-# PROMPTS USER FOR GUESS & HANDLES RESPONSE
-def game_loop(past_nums, game_count, high_score) :
+# MANAGES VARIABLES & RUNS GAME FUNCTIONS
+def start_game() :
+
+    # game intro
+    print("""
+        *** -------------------- ***
+        !!!  WELCOME & HAVE FUN  !!!
+        *** -------------------- ***
+    """)
+    print('\nTO PLAY:\n--Enter a number from 1-10 into the command line to make your guess.\n--If you guess incorrectly you will be given a hint.\n--If you guess correctly the game will end and you can play again!')
+
+    # game play
+    past_nums = []
+    high_score = 0
+    game_count = 1
+
     while True : 
         print("\n*** --- NEW GAME --- ***")
         rand_num = get_rand_num(past_nums)
-        loop_count = 0
+        loop_count = 1
 
         if high_score == 0 :
             print('HIGH SCORE will be unlocked after first play through!\n')
@@ -77,47 +91,46 @@ def game_loop(past_nums, game_count, high_score) :
         stats_arr = guess_loop(loop_count, rand_num, game_count, high_score)
 
         if stats_arr[0] == 1 :
-            continue
+            high_score = stats_arr[1]
+            game_count = stats_arr[3]
         else :
             break
 
-# MANAGES VARIABLES & RUNS GAME FUNCTIONS
-def start_game() :
-    # function variables
-    past_nums = []
-    high_score = 0
-    game_count = 1
-
-    # game introduction
+    # game outro
     print("""
-        *** -------------------- ***
-        !!!  WELCOME & HAVE FUN  !!!
-        *** -------------------- ***
-    """)
-    print('\nTO PLAY:\n--Enter a number from 1-10 into the command line to make your guess.\n--If you guess incorrectly you will be given a hint.\n--If you guess correctly the game will end and you can play again!')
-
-    # runs outside game functions
-    # rand_num = get_rand_num(past_nums)
-    # stats_arr = game_loop(rand_num, game_count, high_score)
-    # print('~~~LINE 1:', stats_arr)
-
-    # if stats_arr[0] == 0 :
-    #     return stats_arr
-    # while stats_arr[0] == 1 :
-        # rand_num = get_rand_num(past_nums)
-    stats_arr = game_loop(past_nums, game_count, high_score)
-    print('~~~LINE 1:', stats_arr)
-        # high_score = stats_arr[1]
-        # game_count = stats_arr[3]
-        # rand_num = get_rand_num(past_nums)
-        # print('ARR:', high_score, game_count, rand_num)
-        # game_loop(rand_num, game_count, high_score)
-        # print('ARR:', high_score, game_count, rand_num)    
-    
-# calls function to start game
-start_game()
-print("""
         *** -------------------- ***
         !!!  THANKS FOR PLAYING  !!!
         *** -------------------- ***
+          
+        Programmed by Bella Bradbury, 2023!
     """)
+    
+# RUNS GAME & END MSG
+start_game()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# PROGRAMMED BY BELLA BRADBURY
